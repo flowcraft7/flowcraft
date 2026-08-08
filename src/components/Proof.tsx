@@ -1,16 +1,23 @@
-const projects = [
+type Project = {
+  title: string;
+  client: string;
+  description: string;
+  stack: string;
+};
+
+const projects: Project[] = [
   {
     title: "Maternal & Fetal Risk Prediction System",
     client: "Doc Poly Clinic — Digitalization Phase 1",
     description: "An AI-powered clinical tool that helps flag high-risk pregnancies earlier, using patient vitals and CTG data. Built as the first phase of a full digital transformation for the clinic.",
     stack: "React · FastAPI · Random Forest · XGBoost",
   },
- {
+  {
     title: "Full Stack Digitalization Platform",
     client: "Dental Clinic",
     description: "Built a full-stack digital platform for a dental clinic, including a voice assistant that lets patients book appointments by simply talking — no forms, no phone hold times.",
     stack: "Full Stack · Voice AI · Automation",
-  },,
+  },
 ];
 
 export default function Proof() {
