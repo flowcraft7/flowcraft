@@ -16,6 +16,13 @@ export default function HeroFullscreen() {
     const video = videoRef.current;
     if (!video) return;
 
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+    if (!isDesktop) {
+      video.play().catch(() => {});
+      return;
+    }
+
     video.pause();
     let targetTime = 0;
     let currentTime = 0;
@@ -82,10 +89,10 @@ export default function HeroFullscreen() {
           </div>
         </motion.nav>
 
-        {/* Scroll-scrubbed video */}
+        {/* Video (scroll-scrubbed on desktop, autoplay loop on mobile) */}
         <div className="absolute inset-0 z-0 flex items-center justify-center">
           <div className="h-[80%] w-[80%] overflow-hidden md:h-full md:w-full">
-            <video ref={videoRef} muted playsInline preload="auto" className="h-full w-full object-cover">
+            <video ref={videoRef} muted loop playsInline preload="auto" className="h-full w-full object-cover">
               <source src="/hero-video-scrub.mp4" type="video/mp4" />
             </video>
           </div>
