@@ -6,7 +6,7 @@ export default function Footer() {
         <p className="font-mono text-xs text-ink-soft">
           © {new Date().getFullYear()} Flowcraft. Fast, automated websites.
         </p>
-        <a href="https://linkedin.com/company/flowcraft7" target="_blank" rel="noopener noreferrer" className="text-sm text-ink-soft hover:text-ink">
+        <a href="https://www.linkedin.com/company/flowcraft-official" target="_blank" rel="noopener noreferrer" className="text-sm text-ink-soft hover:text-ink">
           LinkedIn
         </a>
       </div>
