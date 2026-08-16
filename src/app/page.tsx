@@ -1,5 +1,7 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+﻿import HeroFullscreen from "@/components/HeroFullscreen";
+import RobotMascot from "@/components/RobotMascot";
+import ScrollProgress from "@/components/ScrollProgress";
+import SpeedStats from "@/components/SpeedStats";
 import VoiceAssistant from "@/components/VoiceAssistant";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
@@ -10,8 +12,10 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main>
-      <Header />
-      <Hero />
+      <ScrollProgress />
+      <RobotMascot />
+      <HeroFullscreen />
+      <SpeedStats />
       <VoiceAssistant />
       <Services />
       <Process />

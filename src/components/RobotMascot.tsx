@@ -1,24 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function RobotMascot() {
   const { scrollYProgress } = useScroll();
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 15]);
   const armWave = useTransform(scrollYProgress, [0, 0.1, 0.2, 0.3], [0, -20, 20, 0]);
-
-  const [pupil, setPupil] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    function handleMove(e: MouseEvent) {
-      const dx = (e.clientX / window.innerWidth - 0.5) * 2;
-      const dy = (e.clientY / window.innerHeight - 0.5) * 2;
-      setPupil({ x: dx, y: dy });
-    }
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
-  }, []);
 
   return (
     <motion.div
@@ -37,8 +24,8 @@ export default function RobotMascot() {
 
         {/* head */}
         <rect x="14" y="16" width="36" height="26" rx="8" fill="#1B1E1F" />
-        <circle cx={25 + pupil.x} cy={29 + pupil.y} r="3.5" fill="white" />
-        <circle cx={39 + pupil.x} cy={29 + pupil.y} r="3.5" fill="white" />
+        <circle cx="25" cy="29" r="3.5" fill="white" />
+        <circle cx="39" cy="29" r="3.5" fill="white" />
         <path d="M 24 36 Q 32 40 40 36" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" />
 
         {/* body */}
