@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import { Plus } from "lucide-react";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import Image from "next/image";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function HeroFullscreen() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
@@ -63,12 +64,37 @@ export default function HeroFullscreen() {
             <Image src="/logo.png" alt="Flowcraft" width={28} height={28} />
             <span className="hidden text-base font-medium tracking-tight text-ink md:inline">Flowcraft</span>
 
-            <button className="ml-3 flex items-center gap-2 rounded-full bg-ink px-3 py-1.5">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white">
-                <Plus size={12} strokeWidth={3} className="text-ink" />
-              </span>
-              <span className="text-[11px] text-white">Menu</span>
-            </button>
+            <div className="relative">
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="ml-3 flex items-center gap-2 rounded-full bg-ink px-3 py-1.5"
+              >
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white">
+                  <Plus size={12} strokeWidth={3} className={`text-ink transition-transform ${menuOpen ? "rotate-45" : ""}`} />
+                </span>
+                <span className="text-[11px] text-white">Menu</span>
+              </button>
+
+              {menuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute left-0 top-12 w-48 rounded-lg border border-line bg-white p-2 shadow-lg"
+                >
+                  {[
+                    { label: "Ask Flowcraft", href: "#ask" },
+                    { label: "Services", href: "#services" },
+                    { label: "How It Works", href: "#process" },
+                    { label: "Our Work", href: "#proof" },
+                    { label: "Book a Call", href: "#cta" },
+                  ].map((item) => (
+                    <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm text-ink hover:bg-paper">
+                      {item.label}
+                    </a>
+                  ))}
+                </motion.div>
+              )}
+            </div>
 
             <div className="ml-2 hidden items-center gap-2 rounded-full bg-[#F4F4F6] px-4 py-2 md:flex">
               <span className="text-[11px] text-ink-soft">Web Development</span>

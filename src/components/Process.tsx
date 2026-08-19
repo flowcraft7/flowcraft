@@ -1,58 +1,68 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
+import ProcessLine from "./ProcessLine";
 
-export default function RobotMascot() {
-  const { scrollYProgress } = useScroll();
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 15]);
-  const armWave = useTransform(scrollYProgress, [0, 0.1, 0.2, 0.3], [0, -20, 20, 0]);
+const steps = [
+  {
+    number: "01",
+    title: "Free Audit",
+    description: "We review your current site's speed, and map out the manual workflows costing you time.",
+  },
+  {
+    number: "02",
+    title: "Rebuild & Automate",
+    description: "We rebuild your site for speed and set up the automations that remove the manual work.",
+  },
+  {
+    number: "03",
+    title: "Launch & Monitor",
+    description: "We launch, then keep monitoring performance so the speed gains actually stick.",
+  },
+];
 
-  const [pupil, setPupil] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    function handleMove(e: MouseEvent) {
-      const dx = (e.clientX / window.innerWidth - 0.5) * 2;
-      const dy = (e.clientY / window.innerHeight - 0.5) * 2;
-      setPupil({ x: dx, y: dy });
-    }
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
-  }, []);
-
+export default function Process() {
   return (
-    <motion.div
-      className="pointer-events-none fixed bottom-6 right-6 z-40 hidden lg:block"
-      animate={{ y: [0, -10, 0] }}
-      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-    >
-      <motion.svg width="64" height="72" viewBox="0 0 64 72" style={{ rotate }}>
-        {/* antenna */}
-        <motion.circle
-          cx="32" cy="6" r="3" fill="#0E9F6E"
-          animate={{ opacity: [1, 0.4, 1] }}
-          transition={{ duration: 1.2, repeat: Infinity }}
-        />
-        <line x1="32" y1="9" x2="32" y2="16" stroke="#1B1E1F" strokeWidth="2" />
+    <section id="process" className="border-b border-line py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-2xl text-center"
+        >
+          <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold text-ink">How it works</h2>
+          <p className="mt-4 text-ink-soft">Three steps, start to finish.</p>
+        </motion.div>
 
-        {/* head */}
-        <rect x="14" y="16" width="36" height="26" rx="8" fill="#1B1E1F" />
-        <circle cx={25 + pupil.x} cy={29 + pupil.y} r="3.5" fill="white" />
-        <circle cx={39 + pupil.x} cy={29 + pupil.y} r="3.5" fill="white" />
-        <path d="M 24 36 Q 32 40 40 36" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" />
-
-        {/* body */}
-        <rect x="18" y="44" width="28" height="22" rx="6" fill="#F5F6F3" stroke="#1B1E1F" strokeWidth="2" />
-        <rect x="26" y="50" width="12" height="10" rx="2" fill="#0E9F6E" />
-
-        {/* arms */}
-        <motion.line
-          x1="18" y1="50" x2="8" y2="46"
-          stroke="#1B1E1F" strokeWidth="3" strokeLinecap="round"
-          style={{ rotate: armWave, originX: "18px", originY: "50px" }}
-        />
-        <line x1="46" y1="50" x2="56" y2="46" stroke="#1B1E1F" strokeWidth="3" strokeLinecap="round" />
-      </motion.svg>
-    </motion.div>
+        <div className="relative mx-auto mt-16 max-w-4xl">
+          <ProcessLine />
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
+            {steps.map((step, i) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <motion.span
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.15 + 0.2, type: "spring" }}
+                  className="inline-block font-[family-name:var(--font-mono)] text-sm text-automate"
+                >
+                  {step.number}
+                </motion.span>
+                <h3 className="mt-2 font-[family-name:var(--font-display)] text-lg font-semibold text-ink">{step.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-ink-soft">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

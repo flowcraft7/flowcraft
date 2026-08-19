@@ -76,6 +76,7 @@ export default function VoiceAssistant() {
 
   return (
     <motion.section
+      id="ask"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
