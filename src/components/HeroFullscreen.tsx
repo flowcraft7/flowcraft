@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import { Plus } from "lucide-react";
 import Image from "next/image";
-
+import Link from "next/link";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function HeroFullscreen() {
@@ -86,6 +86,7 @@ export default function HeroFullscreen() {
                     { label: "Services", href: "#services" },
                     { label: "How It Works", href: "#process" },
                     { label: "Our Work", href: "#proof" },
+                    { label: "Buy an Agent", href: "/agents" },
                     { label: "Book a Call", href: "#cta" },
                   ].map((item) => (
                     <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm text-ink hover:bg-paper">
@@ -96,10 +97,9 @@ export default function HeroFullscreen() {
               )}
             </div>
 
-            <div className="ml-2 hidden items-center gap-2 rounded-full bg-[#F4F4F6] px-4 py-2 md:flex">
-              <span className="text-[11px] text-ink-soft">Web Development</span>
-              <span className="text-[11px] text-ink-soft">AI Automation</span>
-            </div>
+            <Link href="/agents" className="ml-2 hidden items-center gap-2 rounded-full bg-signal px-4 py-2 text-[11px] font-medium text-white transition hover:bg-ink md:flex">
+              Buy an Agent →
+            </Link>
           </div>
 
           <div className="pointer-events-auto hidden items-center gap-2 rounded-full bg-[#F4F4F6] py-1.5 pl-4 pr-1.5 md:flex">

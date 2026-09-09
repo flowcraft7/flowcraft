@@ -8,13 +8,16 @@ const supabase = createClient(
 
 export async function POST(req: NextRequest) {
   try {
+    console.log("Using Supabase URL:", process.env.SUPABASE_URL);
+    console.log("Using Supabase key starts with:", process.env.SUPABASE_ANON_KEY?.slice(0, 20));
+
     const { name, email, message } = await req.json();
     console.log("Booking attempt:", { name, email, message });
 
     const { data, error } = await supabase.from("call_requests").insert({ name, email, message }).select();
 
     if (error) {
-      console.error("Supabase insert error:", JSON.stringify(error));
+      console.error("Supabase insert error:", JSON.stringify(error, null, 2));
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
