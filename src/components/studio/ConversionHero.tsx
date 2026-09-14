@@ -106,7 +106,10 @@ export default function ConversionHero() {
         ref={trackRef}
         className={`conversion-scroll-track ${view === "film" ? "film-active" : ""}`}
       >
-        <div className="conversion-layout">
+        <div
+          className={`conversion-layout ${view === "film" ? "background-scene" : "demo-scene"}`}
+        >
+          {view === "film" && <ScrollFilm track={trackRef} />}
           <div className="conversion-copy">
             <div className="conversion-kicker">
               <span />
@@ -132,29 +135,23 @@ export default function ConversionHero() {
                 Talk about your business <ArrowRight size={17} />
               </Link>
             </div>
+            <button
+              className="hero-demo-toggle"
+              aria-expanded={view === "demo"}
+              onClick={() => setView(view === "film" ? "demo" : "film")}
+            >
+              {view === "film"
+                ? "Try the customer journey"
+                : "Close customer demo"}{" "}
+              <ArrowUpRight size={16} />
+            </button>
             <div className="conversion-delivery">
               <span>Designed for your business.</span>
               <span>Set up by our team.</span>
             </div>
           </div>
           <div className="conversion-exhibit">
-            <div className="hero-view-picker" aria-label="Hero experience">
-              <button
-                aria-pressed={view === "film"}
-                onClick={() => setView("film")}
-              >
-                Watch the film
-              </button>
-              <button
-                aria-pressed={view === "demo"}
-                onClick={() => setView("demo")}
-              >
-                Try the customer journey <ArrowUpRight size={15} />
-              </button>
-            </div>
-            {view === "film" ? (
-              <ScrollFilm track={trackRef} />
-            ) : (
+            {view === "demo" && (
               <>
                 <div className="exhibit-heading">
                   <span className="exhibit-index">01—03</span>

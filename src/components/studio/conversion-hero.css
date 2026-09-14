@@ -1,5 +1,5 @@
 .conversion-hero {
-  background: #f4ece1;
+  background: #ffffff;
   position: relative;
   isolation: isolate;
   padding: 64px max(28px, calc((100vw - 1192px) / 2)) 0;
@@ -75,7 +75,7 @@
   justify-content: space-between;
   gap: 34px;
   background: #283727;
-  color: #f4ece1 !important;
+  color: #ffffff !important;
   padding: 16px 20px;
   font-size: 14px;
   border-radius: 2px;
@@ -148,10 +148,10 @@
 }
 .industry-picker {
   display: flex;
-  border-top: 1px solid #e6dfd1;
-  border-left: 1px solid #e6dfd1;
-  border-right: 1px solid #e6dfd1;
-  background: #f4ece1;
+  border-top: 1px solid #f4f6f3;
+  border-left: 1px solid #f4f6f3;
+  border-right: 1px solid #f4f6f3;
+  background: #ffffff;
 }
 .industry-picker button {
   flex: 1;
@@ -159,7 +159,7 @@
   white-space: nowrap;
   background: transparent;
   border: 0;
-  border-right: 1px solid #e6dfd1;
+  border-right: 1px solid #f4f6f3;
   font-size: 12px;
   color: #4f664c;
   padding: 14px 7px;
@@ -169,7 +169,7 @@
   border-right: 0;
 }
 .industry-picker button[aria-pressed="true"] {
-  background: #f4ece1;
+  background: #ffffff;
   color: #283727;
 }
 .industry-picker button[aria-pressed="true"]:before {
@@ -182,25 +182,25 @@
   background: #283727;
 }
 .industry-picker button:hover {
-  background: #f4ece1;
+  background: #ffffff;
 }
 .customer-demo {
   --demo-ink: #283727;
-  --demo-tint: #f4ece1;
-  --demo-rule: #e6dfd1;
-  border: 1px solid #e6dfd1;
-  background: #f4ece1;
+  --demo-tint: #ffffff;
+  --demo-rule: #f4f6f3;
+  border: 1px solid #f4f6f3;
+  background: #ffffff;
   position: relative;
 }
 .customer-demo.demo-salon {
   --demo-ink: #283727;
-  --demo-tint: #f4ece1;
-  --demo-rule: #e6dfd1;
+  --demo-tint: #ffffff;
+  --demo-rule: #f4f6f3;
 }
 .customer-demo.demo-home {
   --demo-ink: #283727;
-  --demo-tint: #f4ece1;
-  --demo-rule: #e6dfd1;
+  --demo-tint: #ffffff;
+  --demo-rule: #f4f6f3;
 }
 .customer-demo-header {
   padding: 17px 24px;
@@ -238,7 +238,7 @@
 .customer-screen {
   padding: 26px 25px 22px;
   min-height: 425px;
-  background: linear-gradient(160deg, var(--demo-tint), #f4ece1 78%);
+  background: linear-gradient(160deg, var(--demo-tint), #ffffff 78%);
 }
 .customer-screen-content {
   width: 100%;
@@ -297,7 +297,7 @@
 }
 .service-picker button:hover {
   padding-left: 6px;
-  background: #f4ece177;
+  background: #ffffff77;
 }
 .service-radio {
   border: 1px solid #8e9c83;
@@ -339,7 +339,7 @@
 .customer-question {
   margin-top: 23px;
   padding: 13px 15px;
-  background: #f4ece1;
+  background: #ffffff;
   border-left: 2px solid var(--demo-ink);
 }
 .customer-question > span {
@@ -374,7 +374,7 @@
   width: 20px;
   height: 20px;
   background: transparent;
-  color: #f4ece1;
+  color: #ffffff;
   font-family: var(--font-display), sans-serif;
   font-size: 14px;
 }
@@ -423,7 +423,7 @@
   color: #4f664c;
 }
 .inquiry-receipt {
-  background: #f4ece1;
+  background: #ffffff;
   border: 1px solid var(--demo-rule);
   margin-top: 20px;
   padding: 15px;
@@ -467,7 +467,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid var(--demo-rule);
-  background: #f4ece1;
+  background: #ffffff;
 }
 .customer-steps button {
   position: relative;
@@ -530,7 +530,7 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  border-top: 1px solid #e6dfd1;
+  border-top: 1px solid #f4f6f3;
   align-items: center;
   position: relative;
 }

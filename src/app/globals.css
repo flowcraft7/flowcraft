@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #f4ece1;
+  --color-paper: #ffffff;
   --color-ink: #283727;
   --color-ink-soft: #4f664c;
   --color-signal: #4f664c;
-  --color-signal-dim: #f4ece1;
+  --color-signal-dim: #ffffff;
   --color-automate: #4f664c;
-  --color-line: #e6dfd1;
+  --color-line: #f4f6f3;
 
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
