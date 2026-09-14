@@ -9,7 +9,16 @@ If the visitor wants to book a call, talk to the team, get a quote, or move forw
 Always respond in the same language the visitor spoke in.`;
 
 function wantsToBook(text: string): boolean {
-  const keywords = ["book", "call", "appointment", "talk to someone", "get in touch", "contact", "quote", "audit"];
+  const keywords = [
+    "book",
+    "call",
+    "appointment",
+    "talk to someone",
+    "get in touch",
+    "contact",
+    "quote",
+    "audit",
+  ];
   return keywords.some((k) => text.toLowerCase().includes(k));
 }
 
@@ -17,36 +26,60 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
     const audioFile = formData.get("audio") as File;
+    if (
+      !(audioFile instanceof File) ||
+      audioFile.size === 0 ||
+      audioFile.size > 10 * 1024 * 1024
+    ) {
+      return NextResponse.json(
+        { error: "Provide an audio recording under 10 MB." },
+        { status: 400 },
+      );
+    }
+    if (!process.env.GROQ_API_KEY) {
+      return NextResponse.json(
+        { error: "Voice chat is temporarily unavailable." },
+        { status: 503 },
+      );
+    }
 
     const transcribeForm = new FormData();
     transcribeForm.append("file", audioFile);
     transcribeForm.append("model", "whisper-large-v3-turbo");
 
-    const transcriptionRes = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${process.env.GROQ_API_KEY}` },
-      body: transcribeForm,
-    });
+    const transcriptionRes = await fetch(
+      "https://api.groq.com/openai/v1/audio/transcriptions",
+      {
+        method: "POST",
+        headers: { Authorization: `Bearer ${process.env.GROQ_API_KEY}` },
+        body: transcribeForm,
+      },
+    );
     const transcriptionData = await transcriptionRes.json();
     if (!transcriptionRes.ok) {
-      throw new Error(`Groq transcription failed: ${JSON.stringify(transcriptionData)}`);
+      throw new Error(
+        `Groq transcription failed: ${JSON.stringify(transcriptionData)}`,
+      );
     }
     const userText = transcriptionData.text;
 
-    const chatRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
-        "Content-Type": "application/json",
+    const chatRes = await fetch(
+      "https://api.groq.com/openai/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "openai/gpt-oss-120b",
+          messages: [
+            { role: "system", content: SYSTEM_PROMPT },
+            { role: "user", content: userText },
+          ],
+        }),
       },
-      body: JSON.stringify({
-        model: "openai/gpt-oss-120b",
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          { role: "user", content: userText },
-        ],
-      }),
-    });
+    );
     const chatData = await chatRes.json();
     if (!chatRes.ok || !chatData.choices) {
       throw new Error(`Groq chat failed: ${JSON.stringify(chatData)}`);

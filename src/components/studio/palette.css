@@ -1,0 +1,187 @@
+/* Pine Fern and Porcelain Cream — site-wide identity. */
+.studio {
+  --cream: #f4ece1;
+  --forest: #4f664c;
+  --green: #4f664c;
+  --line: #cdd0bd;
+  --muted: #62715b;
+  color: #283727;
+}
+.studio .brand-mark {
+  object-position: -9999px;
+  background-color: #4f664c;
+  mask: url("/flowcraft-logo.png") center / contain no-repeat;
+}
+.studio .brand-showcase img,
+.studio .answer-mark img {
+  filter: grayscale(1) sepia(0.5) hue-rotate(40deg) saturate(0.8);
+}
+.studio .form-error {
+  color: #863d32 !important;
+}
+.studio .conversion-primary:hover,
+.studio .button.dark:hover {
+  background: #354a34;
+}
+.hero-view-picker {
+  display: flex;
+  gap: 0;
+  border: 1px solid #bfc7b3;
+  margin-bottom: 16px;
+}
+.hero-view-picker button {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  padding: 13px 10px;
+  font-size: 12px;
+  color: #4f664c;
+}
+.hero-view-picker button[aria-pressed="true"] {
+  background: #4f664c;
+  color: #f4ece1;
+}
+.hero-film {
+  border: 1px solid #bac4ae;
+  background: #e6dfd1;
+}
+.hero-film-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 18px;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #4f664c;
+}
+.hero-film-picture {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.18;
+  overflow: hidden;
+  background: #f4ece1;
+}
+.hero-film-picture video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+.hero-film-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 20px 18px 13px;
+}
+.hero-film-controls strong {
+  font-size: 14px;
+  font-weight: 500;
+  color: #283727;
+}
+.hero-film-controls span {
+  display: block;
+  font-size: 11px;
+  color: #62715b;
+  margin-top: 4px;
+}
+.hero-film-controls button {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #bac4ae;
+  background: transparent;
+  color: #4f664c;
+  flex-shrink: 0;
+}
+.studio .film-seek {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 0 18px 19px;
+  font-size: 10px;
+}
+.studio .film-seek input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  accent-color: #4f664c;
+  min-width: 0;
+}
+.film-seek > span {
+  white-space: nowrap;
+}
+.hero-film-controls .film-desktop-hint {
+  display: none;
+}
+.film-fallback {
+  min-height: 300px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (min-width: 1000px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
+  .conversion-scroll-track.film-active {
+    min-height: 165vh;
+  }
+  .film-active .conversion-layout {
+    position: sticky;
+    top: 110px;
+  }
+  .hero-film-picture {
+    aspect-ratio: 1.75;
+  }
+  .hero-film-controls .film-desktop-hint {
+    display: block;
+  }
+  .hero-film-controls .film-mobile-hint {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .hero-view-picker button {
+    font-size: 11px;
+  }
+  .hero-film-top {
+    font-size: 9px;
+  }
+  .hero-film-controls strong {
+    font-size: 13px;
+  }
+}
+
+.studio .conversion-copy h1 > span {
+  color: #4f664c;
+}
+.studio .conversion-primary {
+  background: #4f664c;
+}
+@media (min-width: 1000px) and (min-height: 650px) {
+  .conversion-hero {
+    padding-top: 36px;
+  }
+  .conversion-actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+  .conversion-primary {
+    gap: 15px;
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+  .conversion-secondary {
+    gap: 8px;
+    font-size: 12px;
+  }
+  .conversion-delivery {
+    margin-top: 24px;
+  }
+}
