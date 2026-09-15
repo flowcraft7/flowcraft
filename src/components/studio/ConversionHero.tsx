@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
-import ScrollFilm from "./ScrollFilm";
+import { useState } from "react";
+import HeroOverview from "./HeroOverview";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -78,8 +78,7 @@ const businesses = [
 ];
 
 export default function ConversionHero() {
-  const [view, setView] = useState<"film" | "demo">("film");
-  const trackRef = useRef<HTMLDivElement>(null);
+  const [view, setView] = useState<"overview" | "demo">("overview");
   const [industry, setIndustry] = useState(0);
   const [step, setStep] = useState(0);
   const [service, setService] = useState(0);
@@ -101,56 +100,43 @@ export default function ConversionHero() {
     setComplete(false);
   }
   return (
-    <section className="conversion-hero" aria-labelledby="conversion-title">
-      <div
-        ref={trackRef}
-        className={`conversion-scroll-track ${view === "film" ? "film-active" : ""}`}
-      >
-        <div
-          className={`conversion-layout ${view === "film" ? "background-scene" : "demo-scene"}`}
-        >
-          {view === "film" && <ScrollFilm track={trackRef} />}
+    <section className="conversion-hero visual-first-hero" aria-labelledby="conversion-title">
+      <div className="conversion-scroll-track">
+        <div className="conversion-layout">
           <div className="conversion-copy">
             <div className="conversion-kicker">
               <span />
               WEBSITES + AI FOR SERVICE BUSINESSES
             </div>
             <h1 id="conversion-title">
-              A slow website.
-              <br />A missed question.
-              <br />A lost customer.
-              <br />
-              <span>Let’s fix that.</span>
+              Your website.
+              <br />Your AI team.
+              <br /><span>Working together.</span>
             </h1>
             <p>
-              We build websites that explain what you sell, AI assistants that
-              answer questions, and workflows that put new inquiries in your
-              team’s hands.
+              Custom websites, AI assistants, and automation. Built for your business.
             </p>
             <div className="conversion-actions">
               <Link href="/websites" className="conversion-primary">
-                Explore the websites <ArrowUpRight size={18} />
+                Explore websites <ArrowUpRight size={18} />
               </Link>
               <Link href="/contact" className="conversion-secondary">
-                Talk about your business <ArrowRight size={17} />
+                Let’s talk <ArrowRight size={17} />
               </Link>
             </div>
             <button
               className="hero-demo-toggle"
               aria-expanded={view === "demo"}
-              onClick={() => setView(view === "film" ? "demo" : "film")}
+              onClick={() => setView(view === "overview" ? "demo" : "overview")}
             >
-              {view === "film"
-                ? "Try the customer journey"
+              {view === "overview"
+                ? "Try the customer demo"
                 : "Close customer demo"}{" "}
               <ArrowUpRight size={16} />
             </button>
-            <div className="conversion-delivery">
-              <span>Designed for your business.</span>
-              <span>Set up by our team.</span>
-            </div>
           </div>
           <div className="conversion-exhibit">
+            {view === "overview" && <HeroOverview />}
             {view === "demo" && (
               <>
                 <div className="exhibit-heading">
