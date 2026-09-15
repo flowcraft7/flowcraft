@@ -49,3 +49,11 @@ Production build, targeted lint, route responses and missing-product 404, deskto
 - Supabase real insert checks FAILED with HTTP 401 / Invalid API key from the provider. The inquiry endpoint correctly reports failure and does not show a false success. No test rows were accepted. A valid project publishable/anon key is required in `.env.local` and the hosting environment before production release.
 - Google Cloud TTS has no configured API key. The endpoint now reports 503 clearly instead of making a doomed upstream request. The current sample speech uses browser speech; live chat and Groq voice transcription were verified independently.
 - Changes are intended for a GitHub review branch while the Supabase credential issue is unresolved. No production release readiness is claimed.
+
+## Follow-up verification
+
+- Replaced cream backgrounds with white; Pine Fern remains an accent.
+- Removed the framed player, scrubber, and film tabs. The original animation now blends into the hero background, with a small motion toggle. The customer journey opens separately.
+- Updated the local ignored environment with the user-provided publishable key. The inquiry API returned HTTP 200; the synthetic row was verified and removed. Credentials must also be updated in the hosting environment; they are not committed.
+- Confirmed public SELECT and DELETE access to call_requests. The database currently has RLS disabled. Prepared supabase/migrations/202609150001_secure_call_requests.sql to restrict visitors to validated inserts. It has NOT been applied: dashboard login or database-owner access is required. Recheck allowed insert and denied read/update/delete after applying.
+- Production build and lint pass. Keep changes on the review branch until database permissions are secured.
