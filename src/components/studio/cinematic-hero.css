@@ -1,0 +1,33 @@
+.studio .fc-cinematic{background:#071010;color:#f2f4ef;position:relative;isolation:isolate;min-height:760px;height:calc(100svh - 90px);overflow:hidden}
+.fc-scene{position:absolute;inset:0 0 0 32%;background:radial-gradient(ellipse at 64% 40%,#12342e,transparent 70%)}
+.fc-scene canvas{display:block;width:100%;height:100%}
+.fc-scene-shade{pointer-events:none;position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#071010 0%,#071010 24%,#071010e8 31%,#07101055 43%,transparent 58%),linear-gradient(0deg,#071010,transparent 18%)}
+.studio .fc-copy{position:relative;z-index:2;margin:0 0 0 7.2%;padding-top:clamp(50px,7vh,105px);max-width:550px;pointer-events:none}
+.fc-copy>*{pointer-events:auto}
+.studio .fc-eyebrow{font:12px var(--font-mono),monospace;letter-spacing:1.4px;color:#a1b9af;margin:0 0 27px}
+.studio .fc-copy h1{font-family:Arial,Helvetica,sans-serif;font-size:clamp(59px,5.25vw,86px);font-weight:500;line-height:1.025;letter-spacing:-4.5px;color:#f2f4ef;margin:0}
+.studio .fc-copy h1 em{font-family:inherit;font-style:normal;color:#23d5bc}
+.studio .fc-intro{font-size:17px;line-height:1.65;color:#acc0b7;margin:28px 0 26px}
+.fc-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.studio .fc-actions a{display:inline-flex;align-items:center;gap:18px;padding:16px 19px;border-radius:100px;font-size:14px;line-height:1.25;white-space:nowrap;transition:background .15s}
+.studio .fc-actions .fc-buy-primary{color:#042721;background:#23d5bc;border:1px solid #23d5bc;font-weight:600}
+.studio .fc-actions .fc-buy-primary:hover{background:#69ead3}
+.studio .fc-actions .fc-buy-secondary{color:#d3ddd6;background:#0d211bc9;border:1px solid #4d796a}
+.studio .fc-actions .fc-buy-secondary:hover{background:#18392f}
+.fc-buy-secondary svg{color:#23d5bc}
+.studio .fc-expertise{font:12px var(--font-mono),monospace;color:#8baba0;margin:32px 0 0;line-height:1.6}
+.fc-expertise span{color:#3b6658;margin:0 9px}
+.studio .fc-status{position:absolute;right:7%;bottom:92px;z-index:2;margin:0;padding:12px 15px;border:1px solid #4a897754;background:#071b16e8;color:#bbdcd0;font:12px var(--font-mono),monospace;letter-spacing:.4px}
+.fc-baseline{position:absolute;bottom:24px;left:4.7%;right:4.7%;z-index:2;display:flex;justify-content:space-between;gap:20px;border-top:1px solid #6384752b;padding-top:19px;color:#93afa2;font:12px var(--font-mono),monospace}
+.fc-baseline a{display:flex;gap:10px;align-items:center;color:#b2d3c6}
+.fc-cinematic a:focus-visible{outline:2px solid #23d5bc;outline-offset:5px}
+.studio.cinematic-home .site-header{background:#071010;color:#f2f4ef;border-color:#244038;backdrop-filter:none}
+.studio.cinematic-home .site-header .brand-mark{background:#23d5bc}
+.studio.cinematic-home .site-header .main-nav a{color:#c0d3c9}
+.studio.cinematic-home .site-header .header-cta{background:#23d5bc;color:#042721;border-color:#23d5bc}
+.studio .conversion-demo-only .conversion-layout{display:block;max-width:850px}
+.studio .conversion-demo-only{padding-top:30px;padding-bottom:20px}
+.studio .conversion-demo-only .conversion-scroll-track{height:auto;min-height:0}
+@media(max-width:1100px){.studio .fc-copy{margin-left:5%;max-width:490px}.studio .fc-copy h1{font-size:65px;letter-spacing:-3.4px}.fc-scene{left:29%}.studio .fc-actions a{padding:15px 17px;gap:12px}.fc-scene-shade{background:linear-gradient(90deg,#071010 2%,#071010dd 30%,#07101044 53%,transparent 76%),linear-gradient(0deg,#071010,transparent 17%)}}
+@media(max-width:760px){.studio .fc-cinematic{height:auto;min-height:1080px}.studio .fc-copy{margin:0 27px;padding-top:37px;max-width:530px}.studio .fc-copy h1{font-size:clamp(48px,10.6vw,75px);letter-spacing:-2.8px;line-height:1.03}.studio .fc-intro{font-size:16px;margin:23px 0}.fc-actions{flex-direction:column;align-items:stretch;max-width:335px}.studio .fc-actions a{justify-content:space-between}.studio .fc-eyebrow{letter-spacing:.8px;margin-bottom:22px}.studio .fc-expertise{margin-top:23px;font-size:12px}.fc-expertise span{margin:0 4px}.fc-scene{inset:480px -40px auto;height:590px}.fc-scene-shade{background:linear-gradient(180deg,#071010 0px,#071010 450px,transparent 595px,transparent 930px,#071010 1080px)}.studio .fc-status{left:27px;right:auto;bottom:98px;max-width:calc(100% - 54px);font-size:12px;line-height:1.5}.fc-baseline{left:27px;right:27px;bottom:22px;flex-wrap:wrap;gap:12px;font-size:12px;line-height:1.5}.studio.cinematic-home .main-nav.open{background:#071010;border-color:#244038}.studio.cinematic-home .menu-toggle{color:#f2f4ef}}
+@media(prefers-reduced-motion:reduce){.studio .fc-actions a{transition:none}}
