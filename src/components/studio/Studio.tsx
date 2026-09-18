@@ -35,6 +35,7 @@ import { websites, agents, stories } from "@/lib/catalog";
 import ChatAgentDemo from "@/components/ChatAgentDemo";
 import "./studio.css";
 import ConversionHero from "./ConversionHero";
+import CinematicHero from "./CinematicHero";
 import "./palette.css";
 
 type Website = (typeof websites)[number];
@@ -86,7 +87,7 @@ function Shell({ children }: { children: ReactNode }) {
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
   return (
-    <div className="studio">
+    <div className={`studio${pathname === "/" ? " cinematic-home" : ""}`}>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
@@ -1085,7 +1086,7 @@ function Contact({
 export function Home({ initialInterest = "" }: { initialInterest?: string }) {
   return (
     <Shell>
-      <ConversionHero />
+      <CinematicHero />
       <div className="principles-strip">
         <span>DESIGNED WITH INTENTION</span>
         <Plus size={13} />
@@ -1757,6 +1758,7 @@ export function DemosPage() {
         accent="More exploring."
         description="Browse the website concepts and try the agent scenarios. No signup required. Sample interactions don’t make real bookings or contact anyone."
       />
+      <ConversionHero demoOnly />
       <Playground />
       <Collection store />
       <section className="section-width page-next">

@@ -77,8 +77,8 @@ const businesses = [
   },
 ];
 
-export default function ConversionHero() {
-  const [view, setView] = useState<"overview" | "demo">("overview");
+export default function ConversionHero({ demoOnly = false }: { demoOnly?: boolean }) {
+  const [view, setView] = useState<"overview" | "demo">(demoOnly ? "demo" : "overview");
   const [industry, setIndustry] = useState(0);
   const [step, setStep] = useState(0);
   const [service, setService] = useState(0);
@@ -100,10 +100,10 @@ export default function ConversionHero() {
     setComplete(false);
   }
   return (
-    <section className="conversion-hero visual-first-hero" aria-labelledby="conversion-title">
+    <section className={`conversion-hero visual-first-hero${demoOnly ? " conversion-demo-only" : ""}`} aria-label={demoOnly ? "Try the customer journey" : undefined} aria-labelledby={demoOnly ? undefined : "conversion-title"}>
       <div className="conversion-scroll-track">
         <div className="conversion-layout">
-          <div className="conversion-copy">
+          {!demoOnly && <div className="conversion-copy">
             <div className="conversion-kicker">
               <span />
               WEBSITES + AI FOR SERVICE BUSINESSES
@@ -135,6 +135,7 @@ export default function ConversionHero() {
               <ArrowUpRight size={16} />
             </button>
           </div>
+          }
           <div className="conversion-exhibit">
             {view === "overview" && <HeroOverview />}
             {view === "demo" && (
