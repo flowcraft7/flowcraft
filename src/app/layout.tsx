@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  icons: { icon: "/flowcraft-logo.png", apple: "/flowcraft-logo.png" },
+  icons: { apple: "/flowcraft-logo.png" },
   title: "Flowcraft — Beautiful Websites. Useful AI. Better Business.",
   description:
     "Explore distinctive business websites, try AI agent demos, and build your next chapter with Flowcraft. Thoughtful design, practical automation, and a real team behind you.",
