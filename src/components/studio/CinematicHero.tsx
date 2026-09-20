@@ -25,7 +25,7 @@ export default function CinematicHero() {
       <div className="fc-scene-shade" aria-hidden="true" />
       <div className="fc-copy">
         <p className="fc-eyebrow">YOUR NEXT STAGE, AUTOMATED.</p>
-        <h1 id="fc-hero-title">Stop building<br />services.<br />Start building<br /><em>systems.</em></h1>
+        <h1 id="fc-hero-title"><span className="fc-hero-thought">Stop building<br />services.</span><span className="fc-hero-thought">Start building<br /><em>systems.</em></span></h1>
         <p className="fc-intro">AI that answers. Workflows that connect.<br />Software that keeps working when you don’t.</p>
         <div className="fc-actions">
           <Link className="fc-buy-primary" href="/websites">Buy your dream website <ArrowUpRight size={17} /></Link>
